@@ -5,7 +5,10 @@
 Гарантируется, что параметры в декорируемых функциях будут следующих типов: bool, int, float, str
 Гарантируется, что в декорируемых функциях не будет значений параметров, заданных по умолчанию"""
 
+import functools
+
 def strict(func):
+    @functools.wraps(func)
     def wrapper(*args, **kwargs):
         for arg, key in zip(args, func.__annotations__):
             if not isinstance(arg, func.__annotations__[key]):

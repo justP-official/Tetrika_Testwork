@@ -17,7 +17,7 @@ def test_strict_with_right_return():
     
     test_var = 1
 
-    assert isinstance(foo(test_var), type(test_var)), True
+    assert isinstance(foo(test_var), foo.__annotations__['return'])
 
 def test_sum_two_with_wrong_args():
     with pytest.raises(TypeError):
